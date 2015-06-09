@@ -13,10 +13,6 @@
         }
     ],
     "autoload": {
-        "files": [
-            "src/HTTPBase.php",
-            "src/CreditCardFraudDetection.php",
-            "src/TelephoneVerification.php"
-        ]
+        "classmap": ["src"]
     }
 }

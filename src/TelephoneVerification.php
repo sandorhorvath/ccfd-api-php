@@ -1,5 +1,4 @@
 <?php
-require_once 'HTTPBase.php';
 
 class TelephoneVerification extends HTTPBase
 {
