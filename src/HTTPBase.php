@@ -80,6 +80,16 @@ abstract class HTTPBase
     protected $timeout = 0;
 
     /**
+     * @var string
+     */
+    protected $proxy_host = '';
+
+    /**
+     * @var integer
+     */
+    protected $proxy_port = 0;
+
+    /**
      * @var bool
      */
     protected $debug = false;
@@ -291,6 +301,12 @@ abstract class HTTPBase
 
             if ($this->curlCaInfo) {
                 curl_setopt($ch, CURLOPT_CAINFO, $this->curlCaInfo);
+            }
+
+            if (!empty($this->proxy_host) && !empty($this->proxy_port)) {
+                curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_HTTP);
+                curl_setopt($ch, CURLOPT_PROXY, $this->proxy_host);
+                curl_setopt($ch, CURLOPT_PROXYPORT, $this->proxy_port);
             }
 
             // This option lets you store the result in a string.
